@@ -1,6 +1,7 @@
 .idea/
 *.iml
 target/
+.editorconfig
 
 .classpath
 .project
@@ -10,4 +11,9 @@ bin/
 # Gradle
 .gradle
 /build/
+gradle
+build.gradle
+gradlew
+gradlew.bat
+settings.gradle
 
