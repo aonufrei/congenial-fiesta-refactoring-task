@@ -2,7 +2,7 @@ package com.gildedrose;
 
 import java.util.function.Consumer;
 
-import static com.gildedrose.ItemUtils.incrementQuantity;
+import static com.gildedrose.ItemUtils.incrementQuality;
 
 public enum ItemQualityUpdater {
 
@@ -10,21 +10,21 @@ public enum ItemQualityUpdater {
     }),
 
     AGEDBRIE_UPDATER(item -> {
-        incrementQuantity(item);
+        ItemUtils.incrementQuality(item);
         item.sellIn--;
         if (item.sellIn < 0) {
-            incrementQuantity(item);
+            ItemUtils.incrementQuality(item);
         }
     }),
 
     BACKSTAGE_UPDATER(item -> {
-        incrementQuantity(item, it -> {
+        incrementQuality(item, it -> {
             if (item.sellIn < 11) {
-                incrementQuantity(item);
+                ItemUtils.incrementQuality(item);
             }
 
             if (item.sellIn < 6) {
-                incrementQuantity(item);
+                ItemUtils.incrementQuality(item);
             }
         });
 
