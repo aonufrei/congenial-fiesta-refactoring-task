@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import java.util.function.Consumer;
 
+import static com.gildedrose.ItemUtils.decrementQuality;
 import static com.gildedrose.ItemUtils.incrementQuality;
 
 public enum ItemQualityUpdater {
@@ -30,18 +31,16 @@ public enum ItemQualityUpdater {
 
         item.sellIn--;
         if (item.sellIn < 0) {
-            item.quality = 0;
+            item.quality = ItemConstants.MIN_QUALITY;
         }
     }),
 
     DEFAULT_UPDATER(item -> {
-        item.quality--;
+        ItemUtils.decrementQuality(item);
 
         item.sellIn--;
         if (item.sellIn < 0) {
-            if (item.quality > 0) {
-                item.quality--;
-            }
+            decrementQuality(item);
         }
     });
 

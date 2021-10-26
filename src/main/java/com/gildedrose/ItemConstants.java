@@ -6,5 +6,6 @@ public class ItemConstants {
     public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
     public static final Integer MAX_QUALITY = 50;
+    public static final Integer MIN_QUALITY = 0;
 
 }
