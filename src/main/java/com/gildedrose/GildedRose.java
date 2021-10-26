@@ -17,7 +17,7 @@ class GildedRose {
     }
 
     public void updateItemQuality(Item item) {
-        getSpecificUpdater(item.name).accept(item);
+        getSpecificUpdater(item.getName()).accept(item);
     }
 
     public Consumer<Item> getSpecificUpdater(String itemName) {

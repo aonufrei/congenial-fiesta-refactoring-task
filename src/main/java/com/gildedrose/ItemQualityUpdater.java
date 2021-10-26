@@ -2,9 +2,6 @@ package com.gildedrose;
 
 import java.util.function.Consumer;
 
-import static com.gildedrose.ItemUtils.decrementQuality;
-import static com.gildedrose.ItemUtils.incrementQuality;
-
 public enum ItemQualityUpdater {
 
     EMPTY_UPDATER(item -> {
@@ -12,35 +9,35 @@ public enum ItemQualityUpdater {
 
     AGEDBRIE_UPDATER(item -> {
         ItemUtils.incrementQuality(item);
-        item.sellIn--;
-        if (item.sellIn < 0) {
+        item.setSellIn(item.getSellIn() - 1);
+        if (item.getSellIn() < 0) {
             ItemUtils.incrementQuality(item);
         }
     }),
 
     BACKSTAGE_UPDATER(item -> {
-        incrementQuality(item, it -> {
-            if (item.sellIn < 11) {
+        ItemUtils.incrementQuality(item, it -> {
+            if (item.getSellIn() < 11) {
                 ItemUtils.incrementQuality(item);
             }
 
-            if (item.sellIn < 6) {
+            if (item.getSellIn() < 6) {
                 ItemUtils.incrementQuality(item);
             }
         });
 
-        item.sellIn--;
-        if (item.sellIn < 0) {
-            item.quality = ItemConstants.MIN_QUALITY;
+        item.setSellIn(item.getSellIn() - 1);
+        if (item.getSellIn() < 0) {
+            item.setQuality(ItemConstants.MIN_QUALITY);;
         }
     }),
 
     DEFAULT_UPDATER(item -> {
         ItemUtils.decrementQuality(item);
 
-        item.sellIn--;
-        if (item.sellIn < 0) {
-            decrementQuality(item);
+        item.setSellIn(item.getSellIn() - 1);
+        if (item.getSellIn() < 0) {
+            ItemUtils.decrementQuality(item);
         }
     });
 

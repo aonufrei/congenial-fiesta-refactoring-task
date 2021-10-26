@@ -7,21 +7,25 @@ import static com.gildedrose.ItemConstants.MIN_QUALITY;
 
 public class ItemUtils {
 
-
-    public static void incrementQuality(Item item) {
-        if (item.quality < MAX_QUALITY) {
-            item.quality++;
+    public static boolean incrementQuality(Item item) {
+        boolean canBeIncremented = item.getQuality() < MAX_QUALITY;
+        if (canBeIncremented) {
+            item.setQuality(item.getQuality() + 1);
         }
+        return canBeIncremented;
     }
 
     public static void incrementQuality(Item item, Consumer<Item> callback) {
-        incrementQuality(item);
-        callback.accept(item);
+        if (incrementQuality(item)) {
+            callback.accept(item);
+        }
     }
 
     public static void decrementQuality(Item item) {
-        if (item.quality > MIN_QUALITY) {
-            item.quality--;
+        if (item.getQuality() > MIN_QUALITY) {
+            item.setQuality(item.getQuality() - 1);
         }
     }
+
+
 }
