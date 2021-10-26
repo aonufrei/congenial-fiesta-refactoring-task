@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 import static com.gildedrose.ItemConstants.*;
 
 class GildedRose {
-    private Item[] items;
+    private final Item[] items;
 
     public GildedRose(Item[] items) {
         this.items = items;
